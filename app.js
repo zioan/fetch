@@ -7,60 +7,39 @@ document.getElementById("button3").addEventListener("click", getExternal);
 // Get local text file data
 function getText() {
   fetch("test.txt")
-    .then(function (res) {
-      // console.log(res);
-      return res.text();
-    })
-    .then(function (data) {
-      // console.log(data);
-      // document.body.innerHTML += `
-      // <li>${data}</li>
-      // `;
+    .then((res) => res.text())
+    .then((data) => {
       document.getElementById("output").innerHTML = data;
     })
-    .catch(function (err) {
-      console.log(err);
-    });
+    .catch((err) => console.log(err));
 }
 
 // Get local json data
 function getJson() {
   fetch("posts.json")
-    .then(function (res) {
-      // console.log(res);
-      return res.json();
-    })
-    .then(function (data) {
-      // console.log(data);
+    .then((res) => res.json())
+    .then((data) => {
       let output = "";
-      data.forEach(function (post) {
+      data.forEach((post) => {
         output += `<li>${post.title} : ${post.body}</li>`;
       });
 
       document.getElementById("output").innerHTML = output;
     })
-    .catch(function (err) {
-      console.log(err);
-    });
+    .catch((err) => console.log(err));
 }
 
 // Get from external API
 function getExternal() {
   fetch("https://api.github.com/users")
-    .then(function (res) {
-      // console.log(res);
-      return res.json();
-    })
-    .then(function (data) {
-      // console.log(data);
+    .then((res) => res.json())
+    .then((data) => {
       let output = "";
-      data.forEach(function (user) {
+      data.forEach((user) => {
         output += `<li>${user.id} : ${user.login}</li>`;
       });
 
       document.getElementById("output").innerHTML = output;
     })
-    .catch(function (err) {
-      console.log(err);
-    });
+    .catch((err) => console.log(err));
 }
